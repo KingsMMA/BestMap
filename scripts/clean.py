@@ -17,7 +17,6 @@ def remove_file(path):
 
 remove_directory('assets')
 remove_directory('Components')
-remove_directory('data')
 remove_directory('extra')
 remove_file('index.js')
 remove_file('metadata.json')
