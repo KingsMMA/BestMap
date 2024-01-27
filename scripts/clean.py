@@ -1,4 +1,3 @@
-import pathlib
 import shutil
 import os
 
@@ -13,7 +12,7 @@ def remove_file(path):
     if not os.path.isfile('../' + path):
         print(f"{path}{' ' * (14 - len(path))}| File doesn't exist")
         return
-    pathlib.Path.unlink('../' + path)
+    os.remove('../' + path)
     print(f"{path}{' ' * (14 - len(path))}| Successfully removed file")
 
 remove_directory('assets')

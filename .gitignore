@@ -11,3 +11,4 @@ index.js
 metadata.json
 utils.js
 config.toml
+scripts/__pycache__/
