@@ -392,6 +392,14 @@ class Config {
     // region Credits
 
     @ButtonProperty({
+        name: "&b&lUnclaimedBloom6",
+        description: "Original creator of IllegalMap.",
+        category: "Credits",
+        placeholder: " "
+    })
+    bloom() {};
+
+    @ButtonProperty({
         name: "&a&lTenios",
         description: "First person to figure out how the actual score calculation worked and helped a bunch with room hashing idea and some other optimization.",
         category: "Credits",
@@ -401,7 +409,7 @@ class Config {
 
     @ButtonProperty({
         name: "&2&lSoopyBoo32",
-        description: "Provided a tool which allowed me to measure the lag caused by the module.",
+        description: "Provided a tool which allowed bloom to measure the lag caused by the module.",
         category: "Credits",
         placeholder: " "
     })
