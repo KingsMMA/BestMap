@@ -19,4 +19,4 @@ register("step", () => {
     cc("&7bugs or make suggestions!")
     cc("&a&a&b&c&d&d&e")
     ChatLib.chat(`&b&m${ChatLib.getChatBreak(" ")}`)
-}).setFps(5)
+}).setFps(1)
