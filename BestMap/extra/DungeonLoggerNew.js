@@ -15,7 +15,7 @@ DmapDungeon.onDungeonAllScanned(dung => {
     const str = dung.dungeonMap.convertToString()
     if (!str) return ChatLib.chat(`&cInvalid dungeon string!`)
 
-    appendToFile("IllegalMap", "data/dungeons.txt", str)
+    appendToFile("BestMap", "data/dungeons.txt", str)
 
     if (!Config.logDungeonChatInfo) return
 
@@ -71,7 +71,7 @@ const getRoomHover = (roomStrings) => {
     return cols.join("\n")
 }
 const doShit = (floor) => {
-    const dungeons = readFileLines("IllegalMap", "data/dungeons.txt")
+    const dungeons = readFileLines("BestMap", "data/dungeons.txt")
     if (!dungeons) return
 
     ChatLib.chat(`&aProcessing Dungeons...`)

@@ -1,4 +1,5 @@
-IllegalMap/data/data.json
-IllegalMap/config.toml
-IllegalMap/data/dungeonLogs.json
-IllegalMap/data/dungeons.txt
+BestMap/data/data.json
+BestMap/config.toml
+BestMap/data/dungeonLogs.json
+BestMap/data/dungeons.txt
+.idea

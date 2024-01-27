@@ -63,8 +63,8 @@ export class DungeonPlayer {
                 this.rank = getRank(hypixelPlayer)
                 this.formatted = `${this.rank} ${this.player}`.replace("&7 ", "&7")
                 this.updateRenderVariables()
-            }).catch(e => console.log(`IllegalMap Error: ${e.toString()}`))
-        }).catch(e => console.log(`IllegalMap Error: ${e.toString()}`))
+            }).catch(e => console.log(`BestMap Error: ${e.toString()}`))
+        }).catch(e => console.log(`BestMap Error: ${e.toString()}`))
     }
     renderHead() {
         if (!this.iconX || !this.iconY || !this.headImage) return

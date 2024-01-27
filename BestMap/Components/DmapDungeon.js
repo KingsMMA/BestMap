@@ -58,7 +58,7 @@ export default new class DmapDungeon {
                     if ("doors" in room) return
                     room.doors = final
                     ChatLib.chat(`&aAdded doors for ${r.getName(true)}&a: &6${final}`)
-                    FileLib.write("IllegalMap", "data/rooms.json", JSON.stringify(roomsJson, null, 4))
+                    FileLib.write("BestMap", "data/rooms.json", JSON.stringify(roomsJson, null, 4))
                     return
                 }
             })

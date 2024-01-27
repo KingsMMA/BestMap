@@ -11,9 +11,9 @@ register("step", () => {
     dmapData.firstTime = false 
     dmapData.save()
     ChatLib.chat(`&b&m${ChatLib.getChatBreak(" ")}`)
-    cc(`&b&l&nIllegalMap ${JSON.parse(FileLib.read("IllegalMap", "metadata.json")).version}`)
+    cc(`&b&l&nBestMap ${JSON.parse(FileLib.read("BestMap", "metadata.json")).version}`)
     cc("&a&a&b&c&d&e")
-    cc("&aThank you for installing IllegalMap!")
+    cc("&aThank you for installing BestMap!")
     cc("&a&a&b&c&d&e&r")
     new TextComponent(gc("&6Click here &7to join my Discord server to report")).setClick("open_url", "https://discord.gg/pykzREcAuZ").setHover("show_text", "&9https://discord.gg/pykzREcAuZ").chat()
     cc("&7bugs or make suggestions!")

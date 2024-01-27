@@ -4,7 +4,7 @@ import PogObject from "../PogData/index"
 import Config from "./data/Config"
 
 export const prefix = "&8[&bMap&8]"
-export const dmapData = new PogObject("IllegalMap", {
+export const dmapData = new PogObject("BestMap", {
     "firstTime": true,
     "uuid": null,
     "map": {
@@ -29,7 +29,7 @@ export const dmapData = new PogObject("IllegalMap", {
 
 export const mapCellSize = 5
 export const defaultMapSize = [125, 125] // cell size * (23 for the map cells + 2 for the border each side)
-export const roomsJson = JSON.parse(FileLib.read("IllegalMap", "data/rooms.json"))
+export const roomsJson = JSON.parse(FileLib.read("BestMap", "data/rooms.json"))
 // Room data indexed by their roomIDs
 export const RoomMap = new Map(roomsJson.map(a => [a.roomID, a]))
 
@@ -163,7 +163,7 @@ export const getCore = (x, z) => {
     return hashCode(blockIds)
 }
 export const getClosestRoomCore = ([x, z]) => getRealCoords(getGridCoords([x, z]))
-export const getRoomsFile = () => JSON.parse(FileLib.read("IllegalMap", "data/rooms.json"))
+export const getRoomsFile = () => JSON.parse(FileLib.read("BestMap", "data/rooms.json"))
 
 export const chunkLoaded = ([x, y, z]) => World.getWorld().func_175726_f(new BlockPoss(x, y, z)).func_177410_o()
 export const splitCoord = (str) => str.split(",").map(a => parseFloat(a))

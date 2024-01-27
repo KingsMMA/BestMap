@@ -21,7 +21,7 @@ import { renderStarMobStuff } from "./extra/StarMobStuff"
 import DmapDungeon from "./components/DmapDungeon"
 import Room from "./components/Room"
 
-const peekKey = new KeyBind("Peek Rooms", Keyboard.KEY_NONE, "IllegalMap")
+const peekKey = new KeyBind("Peek Rooms", Keyboard.KEY_NONE, "BestMap")
 
 // Store the pre-calculated render related stuff to improve performance
 

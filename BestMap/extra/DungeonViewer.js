@@ -98,7 +98,7 @@ register("command", (floor) => {
         const started = Date.now()
         ChatLib.chat(`&aProcessing logs for ${floor?.toUpperCase() || "All Floors"}...`)
         const logMap = new Map()
-        const logs = readFileLines("IllegalMap", "data/dungeons.txt")
+        const logs = readFileLines("BestMap", "data/dungeons.txt")
         if (!logs || !logs.length) return ChatLib.chat(`&cNo dungeons logged!`)
 
         for (let dungeonString of logs) {

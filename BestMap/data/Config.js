@@ -12,9 +12,9 @@ import {
     @SliderProperty
 } from '../../Vigilance/index';
 
-const getModuleVersion = () => JSON.parse(FileLib.read("IllegalMap", "metadata.json")).version
+const getModuleVersion = () => JSON.parse(FileLib.read("BestMap", "metadata.json")).version
 
-@Vigilant("IllegalMap", "IllegalMap", {
+@Vigilant("BestMap", "BestMap", {
     getCategoryComparator: () => (a, b) => {
         const categories = ["General", "Players", "Rooms", "Radar", "Credits"];
         return categories.indexOf(a.name) - categories.indexOf(b.name);
@@ -25,7 +25,7 @@ class Config {
         this.initialize(this)
         this.setCategoryDescription("General", 
             `
-            &6&l&nIllegalMap ${getModuleVersion()}
+            &6&l&nBestMap ${getModuleVersion()}
 
 
             &bNote: An API key is required for some features. To set it, run &a/api new&b.
@@ -241,7 +241,7 @@ class Config {
 
     @SwitchProperty({
         name: "&6Notify Updates",
-        description: "Automatically check for updates and notify you when there is a new version of IllegalMap available (Doesn't auto download).",
+        description: "Automatically check for updates and notify you when there is a new version of BestMap available (Doesn't auto download).",
         category: "General",
         subcategory: "Updates"
     })
