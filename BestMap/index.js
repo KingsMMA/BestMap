@@ -214,7 +214,7 @@ register("command", (...args) => {
 
     // Used for debugging
     if (args[0] == "reset") DmapDungeon.reset()
-}).setName("dmap")
+}).setName("bmap")
 
 register("dragged", (dx, dy, x, y, btn) => {
     if (Config.mapEditGui.isOpen()) {
