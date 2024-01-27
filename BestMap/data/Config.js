@@ -16,7 +16,7 @@ const getModuleVersion = () => JSON.parse(FileLib.read("BestMap", "metadata.json
 
 @Vigilant("BestMap", "BestMap", {
     getCategoryComparator: () => (a, b) => {
-        const categories = ["General", "Players", "Rooms", "Radar", "Credits"];
+        const categories = ["General", "Players", "Rooms", "Credits"];
         return categories.indexOf(a.name) - categories.indexOf(b.name);
     }
 })
@@ -416,83 +416,6 @@ class Config {
     })
     showMimic = true;
 
-    // endregion
-    // region Radar
-
-    // Star mob Esp
-    @SwitchProperty({
-        name: "&6Star Mob Esp",
-        description: "Draws a box around starred mobs and minibosses.",
-        category: "Radar",
-        subcategory: "Star Mob ESP"
-    })
-    starMobEsp = false;
-
-    // Star mob esp color
-    @ColorProperty({
-        name: "&6Star Mob Esp Color",
-        description: "The color of the box drawn around starred mobs.",
-        category: "Radar",
-        subcategory: "Star Mob ESP"
-    })
-    starMobEspColor = new java.awt.Color(0, 1, 0, 1);
-
-    @SwitchProperty({
-        name: "&bRadar",
-        description: "Shows the location of star mobs on the map.\n&aCan be toggled using the /star command if you only need it to find a lost mob.",
-        category: "Radar"
-    })
-    radar = false;
-
-    @SwitchProperty({
-        name: "&bStar Mob Border",
-        description: "Renders a small black border around starred mobs on the map.",
-        category: "Radar",
-        subcategory: "Star Mobs"
-    })
-    starMobBorder = true;
-
-    @SwitchProperty({
-        name: "&bMiniboss Colors",
-        description: "Changes the color of minibosses on the map.",
-        category: "Radar",
-        subcategory: "Star Mobs"
-    })
-    minibossColors = true;
-
-    @SwitchProperty({
-        name: "&eRadar Heads",
-        description: "Shows the mob's skin (like player icons) instead of a colored dot.",
-        category: "Radar",
-        subcategory: "Heads"
-    })
-    radarHeads = true;
-
-    
-    @PercentSliderProperty({
-        name: "&eRadar Head Scale",
-        description: "Size of the heads of starred mobs on the map.",
-        category: "Radar",
-        subcategory: "Heads"
-    })
-    radarHeadScale = 0.5;
-    
-    @SwitchProperty({
-        name: "&cRadar Heads Border",
-        description: "Display a border around star mobs on the map (Same as player heads).",
-        category: "Radar",
-        subcategory: "Border"
-    })
-    radarHeadsBorder = true;
-
-    @ColorProperty({
-        name: "&cRadar Heads Border Color",
-        description: "If border is enabled, change the color to make the star mobs look better or stick out more on the map.",
-        category: "Radar",
-        subcategory: "Border"
-    })
-    radarHeadsBorderColor = Color.BLACK
-    
     // endregion
     // region Credits
 
