@@ -161,12 +161,14 @@ export default new class DmapDungeon {
 
         // Update player visited rooms
         register("tick", () => {
-            if (!Dungeon.inDungeon || !Config.enabled || !this.players.length || !Dungeon.time || Dungeon.bossEntry) return
+            if (!Dungeon.inDungeon || !Config.enabled || !this.players.length || Dungeon.bossEntry) return
             for (let p of this.players) {
                 let currentRoom = this.getPlayerRoom(p)
                 if (!currentRoom) continue
+                currentRoom.entered = true;
 
                 // Room enter/exit event
+                if (!Dungeon.time) continue;
                 if (currentRoom !== p.lastRoom) {
                     if (p.lastRoom) this.playerRoomExitListeners.forEach(func => func(p, p.lastRoom))
                     this.playerRoomEnterListeners.forEach(func => func(p, currentRoom))

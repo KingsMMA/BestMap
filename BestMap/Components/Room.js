@@ -28,6 +28,7 @@ export default class Room {
         
         this.checkmark = Checkmark.NONE
         this.explored = false
+        this.entered = false;
         this.hasMimic = false
 
         // Rendering stuff
@@ -215,10 +216,10 @@ export default class Room {
     }
 
     getColor() {
-        if (!this.explored) {
+        if (!(this.explored || this.entered)) {
             const adjacentRooms = this.getAdjacentRooms();
             for (let room of adjacentRooms) {
-                if (room.explored) {
+                if (room.explored || room.entered) {
                     return new Color(65/255, 65/255, 65/255, 1);
                 }
             }
@@ -256,7 +257,7 @@ export default class Room {
         const name = this.name ?? "Unknown"
         Renderer.translate(dmapData.map.x, dmapData.map.y)
         Renderer.scale(dmapData.map.scale, dmapData.map.scale)
-        renderCenteredString(this.explored ? name : "???", this.roomNameX, this.roomNameY-1, 0.55, true)
+        renderCenteredString((this.explored || this.entered) ? name : "???", this.roomNameX, this.roomNameY-1, 0.55, true)
         Renderer.finishDraw()
     }
 

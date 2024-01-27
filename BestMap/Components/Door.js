@@ -41,8 +41,8 @@ export default class Door {
         this.updateType()
     }
     getColor() {
-        let childOpened = this.childRoom && this.childRoom.explored;
-        let parentOpened = this.parentRoom && this.parentRoom.explored;
+        let childOpened = this.childRoom && (this.childRoom.explored || this.childRoom.entered);
+        let parentOpened = this.parentRoom && (this.parentRoom.explored || this.childRoom.entered);
         if (!(this.explored || childOpened || parentOpened)) {
             return new Color(0, 0, 0, 0);
         }
