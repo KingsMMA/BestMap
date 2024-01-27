@@ -3,3 +3,11 @@ BestMap/config.toml
 BestMap/data/dungeonLogs.json
 BestMap/data/dungeons.txt
 .idea
+assets/
+Components/
+data/
+extra/
+index.js
+metadata.json
+utils.js
+config.toml
