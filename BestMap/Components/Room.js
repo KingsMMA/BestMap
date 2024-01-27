@@ -215,7 +215,15 @@ export default class Room {
     }
 
     getColor() {
-        if (!this.explored) return new Color(0, 0, 0, 0);
+        if (!this.explored) {
+            const adjacentRooms = this.getAdjacentRooms();
+            for (let room of adjacentRooms) {
+                if (room.explored) {
+                    return new Color(65/255, 65/255, 65/255, 1);
+                }
+            }
+            return new Color(0, 0, 0, 0);
+        }
 
         let color = RoomColors.get(this.type)
         // Gray room on the map.
@@ -248,7 +256,7 @@ export default class Room {
         const name = this.name ?? "Unknown"
         Renderer.translate(dmapData.map.x, dmapData.map.y)
         Renderer.scale(dmapData.map.scale, dmapData.map.scale)
-        renderCenteredString(name, this.roomNameX, this.roomNameY-1, 0.55, true)
+        renderCenteredString(this.explored ? name : "???", this.roomNameX, this.roomNameY-1, 0.55, true)
         Renderer.finishDraw()
     }
 

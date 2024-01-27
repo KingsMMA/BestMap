@@ -33,7 +33,17 @@ const renderRoomNames = () => {
     if (!Config.showRoomNames && !Config.showPuzzleNames && !peekKey.isKeyDown()) return
     DmapDungeon.dungeonMap.rooms.forEach(room => {
         if (neverRenderNameTypes.has(room.type)) return
-        if (!room.explored) return;
+        if (!this.explored) {
+            let anyAdjacentExplored = false;
+            const adjacentRooms = room.getAdjacentRooms();
+            for (let room of adjacentRooms) {
+                if (room.explored) {
+                    anyAdjacentExplored = true;
+                    break;
+                }
+            }
+            if (!anyAdjacentExplored) return;
+        }
 
         if (renderWhenPeekKeyTypes.has(room.type) && (peekKey.isKeyDown() || Config.showRoomNames)) room.renderName()
         if (alwaysRenderTypes.has(room.type) && (peekKey.isKeyDown() || Config.showPuzzleNames)) room.renderName()
