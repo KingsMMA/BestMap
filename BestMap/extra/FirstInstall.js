@@ -15,7 +15,7 @@ register("step", () => {
     cc("&a&a&b&c&d&e")
     cc("&aThank you for installing BestMap!")
     cc("&a&a&b&c&d&e&r")
-    new TextComponent(gc("&6Click here &7to join my Discord server to report")).setClick("open_url", "https://discord.gg/pykzREcAuZ").setHover("show_text", "&9https://discord.gg/pykzREcAuZ").chat()
+    new TextComponent(gc("&6Click here &7to join my Discord server to report")).setClick("open_url", "https://discord.gg/EzV7r3BNJr").setHover("show_text", "&9https://discord.gg/EzV7r3BNJr").chat()
     cc("&7bugs or make suggestions!")
     cc("&a&a&b&c&d&d&e")
     ChatLib.chat(`&b&m${ChatLib.getChatBreak(" ")}`)

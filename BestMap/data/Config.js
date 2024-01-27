@@ -50,9 +50,9 @@ class Config {
         placeholder: "Join"
     })
     MyDiscord() {
-        java.awt.Desktop.getDesktop().browse(new java.net.URI("https://discord.gg/pykzREcAuZ"))
+        java.awt.Desktop.getDesktop().browse(new java.net.URI("https://discord.gg/EzV7r3BNJr"))
     }
-    // https://discord.gg/pykzREcAuZ
+    // https://discord.gg/EzV7r3BNJr
 
     @SwitchProperty({
         name: "&aMap Enabled",
