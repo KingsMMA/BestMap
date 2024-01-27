@@ -190,9 +190,9 @@ export default new class DmapDungeon {
 
         register("chat", (player) => {
             if (player == "You") player = Player.getName()
-            let player = this.players.find(a => a.player == player)
-            if (!player) return
-            player.deaths++
+            let player2 = this.players.find(a => a.player == player)
+            if (!player2) return
+            player2.deaths++
         }).setCriteria(/^ ☠ (\w+) .+$/)
 
         register("worldUnload", () => this.reset())
