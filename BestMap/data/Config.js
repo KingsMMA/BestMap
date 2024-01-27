@@ -40,8 +40,7 @@ class Config {
     editDungeonInfoGui = new Gui()
     borderScaleGui = new Gui()
 
-    // ---------------------------------------------------------------
-    // General
+    // region General
 
     @ButtonProperty({
         name: "&3&lMy Discord Server",
@@ -249,8 +248,8 @@ class Config {
 
 
 
-    // ---------------------------------------------------------------
-    // Players
+    // endregion
+    // region Players
 
     @SwitchProperty({
         name: "&ePlayer Heads",
@@ -299,17 +298,9 @@ class Config {
         subcategory: "Run Overview"
     })
     showPlayerPerformances = false;
-    
-    // @SwitchProperty({
-    //     name: "&cNotify of Room Skippers",
-    //     description: "Notifies you in chat when someone has skipped a puzzle or trap.\n&cNOTE: Does not account for situations where someone leaps to someone else in a puzzle and immediately walks out.",
-    //     category: "Players",
-    //     subcategory: "Room Skips"
-    // })
-    // notifyOfRoomSkippers = false;
 
-    // ---------------------------------------------------------------
-    // Rooms
+    // endregion
+    // region Rooms
 
     @SwitchProperty({
         name: "Darken Unexplored",
@@ -425,8 +416,8 @@ class Config {
     })
     showMimic = true;
 
-    // ---------------------------------------------------------------
-    // Radar
+    // endregion
+    // region Radar
 
     // Star mob Esp
     @SwitchProperty({
@@ -502,7 +493,8 @@ class Config {
     })
     radarHeadsBorderColor = Color.BLACK
     
-    // Credits
+    // endregion
+    // region Credits
 
     @ButtonProperty({
         name: "&a&lTenios",
@@ -544,7 +536,7 @@ class Config {
     })
     ctdiscord() {};
 
-
+    // endregion
 
 }
 
