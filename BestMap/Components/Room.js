@@ -215,14 +215,15 @@ export default class Room {
     }
 
     getColor() {
+        if (!this.explored) return new Color(0, 0, 0, 0);
+
         let color = RoomColors.get(this.type)
         // Gray room on the map.
         if (this.type == RoomTypes.UNKNOWN && !this.roofHeight) return new Color(65/255, 65/255, 65/255, 1)
 
         if (this.highlighted) color = colorShift(color, Color.YELLOW, 0.2)
-        if (!this.explored && Dungeon.time && Config.darkenUnexplored) color = color.darker().darker()
         // Give the room a red tint if it has the mimic
-        if (this.hasMimic) color = colorShift(color, Color.RED, 0.2)
+        if (this.hasMimic && Dungeon.mimicKilled) color = colorShift(color, Color.RED, 0.2)
         return color
     }
 

@@ -245,9 +245,6 @@ class Config {
         subcategory: "Updates"
     })
     notifyUpdates = true;
-
-
-
     // endregion
     // region Players
 
@@ -302,13 +299,6 @@ class Config {
     // endregion
     // region Rooms
 
-    @SwitchProperty({
-        name: "Darken Unexplored",
-        description: "Darken unopened rooms on the map during the run. The rooms will not be darkened before the run begins.",
-        category: "Rooms"
-    })
-    darkenUnexplored = true;
-
     @ColorProperty({
         name: "&8Wither Door Color",
         description: "Changes the wither door color.",
@@ -316,24 +306,6 @@ class Config {
         subcategory: "Wither Doors"
     })
     witherDoorColor = new Color(0, 0, 0, 1);
-
-    // Wither Door Esp
-    @SwitchProperty({
-        name: "&8Wither Door Esp",
-        description: "Draws a box around the next two wither/blood doors.\n&8- Suggested by epha & RestOps",
-        category: "Rooms",
-        subcategory: "Wither Doors"
-    })
-    witherDoorEsp = false;
-
-    // Wither door esp color
-    @ColorProperty({
-        name: "&8Wither Door Esp Color",
-        description: "The color of the box drawn around wither doors.",
-        category: "Rooms",
-        subcategory: "Wither Doors"
-    })
-    witherDoorEspColor = new java.awt.Color(1, 0, 0, 1);
 
     @SwitchProperty({
         name: "&dShow Rooms",

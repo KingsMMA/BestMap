@@ -41,6 +41,8 @@ export default class Door {
         this.updateType()
     }
     getColor() {
+        if (!this.explored) return new Color(0, 0, 0, 0);
+
         let color = doorTypeColors.get(this.type)
 
         // Custom wither door color
@@ -52,8 +54,6 @@ export default class Door {
         // Unused in the main module currently.o
         if (this.highlighted) color = colorShift(color, Color.GREEN, 0.2)
 
-        // Darken unexplored
-        if (!this.explored && Dungeon.time && Config.darkenUnexplored) color = color.darker().darker()
         return color
     }
     draw(bufferedImage) {
