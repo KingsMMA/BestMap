@@ -42,7 +42,7 @@ export default class Door {
     }
     getColor() {
         let childOpened = this.childRoom && (this.childRoom.explored || this.childRoom.entered);
-        let parentOpened = this.parentRoom && (this.parentRoom.explored || this.childRoom.entered);
+        let parentOpened = this.parentRoom && (this.parentRoom.explored || this.parentRoom.entered);
         if (!(this.explored || childOpened || parentOpened)) {
             return new Color(0, 0, 0, 0);
         }
