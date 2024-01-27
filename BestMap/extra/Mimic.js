@@ -34,7 +34,7 @@ register("step", () => {
     if (!Object.keys(chestRooms).length) return
 
     possibleMimicCoords = chestRooms[Object.keys(chestRooms)[0]] // Should be the only room left
-}).setFps(2)
+}).setFps(1)
 
 register("step", () => {
     if (!Dungeon.inDungeon || Dungeon.mimicKilled || !possibleMimicCoords || Dungeon.bossEntry || !Config.scanMimic) return
@@ -47,7 +47,7 @@ register("step", () => {
         Dungeon.mimicKilled = true
         if (Config.announceMimic) ChatLib.command(`pc ${Config.announceMimicMessage}`)
     })
-}).setFps(2)
+}).setFps(1)
 
 register("worldUnload", () => {
     possibleMimicCoords = null
