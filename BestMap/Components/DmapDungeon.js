@@ -6,6 +6,7 @@ import { DungeonPlayer } from "./DungeonPlayer"
 import Room from "./Room"
 import Door from "./Door"
 import DungeonMap from "./DungeonMap"
+import { roomExplored, positions } from "../extra/SocketManager";
 
 /**
  * Class which stores and processed most of the data for the whole module.
@@ -22,7 +23,7 @@ export default new class DmapDungeon {
         this.dungeonFullyScannedListeners = []
         
         register("step", () => {
-            if (!Dungeon.inDungeon || this.dungeonMap.fullyScanned) return
+            if (!Dungeon.inDungeon) return
             this.dungeonMap.scan()
 
             if (this.dungeonMap.fullyScanned) {
@@ -119,7 +120,13 @@ export default new class DmapDungeon {
             for (let p of this.players) {
                 let player = World.getPlayerByName(p.player)
                 if (!player) {
-                    p.inRender = false
+                    p.inRender = false;
+                    if (!p) continue;
+                    const posData = positions[p.player];
+                    if (!posData || !posData.x || !posData.z) continue;
+                    p.iconX = MathLib.map(posData.x, -200, -10, 0, defaultMapSize[0])
+                    p.iconY = MathLib.map(posData.z, -200, -10, 0, defaultMapSize[1])
+                    p.rotation = posData.rotation;
                     continue
                 }
                 // Don't update players after the run ends
@@ -165,7 +172,10 @@ export default new class DmapDungeon {
             for (let p of this.players) {
                 let currentRoom = this.getPlayerRoom(p)
                 if (!currentRoom) continue
-                currentRoom.entered = true;
+                if (!currentRoom.entered) {
+                    currentRoom.entered = true;
+                    roomExplored(currentRoom.name);
+                }
 
                 // Room enter/exit event
                 if (!Dungeon.time) continue;
@@ -484,7 +494,10 @@ export default new class DmapDungeon {
         if (!(player instanceof DungeonPlayer)) player = this.players.find(a => a.player == player)
         if (!player) return null
 
-        return this.getRoomAt(player.realX, player.realZ)
+        if (player.inRender)
+            return this.getRoomAt(player.realX, player.realZ);
+        else
+            return this.getRoomAt(positions[player.player].x, positions[player.player].z)
     }
 
     /**

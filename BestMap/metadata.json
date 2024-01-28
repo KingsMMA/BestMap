@@ -10,6 +10,7 @@
         "PromiseV2",
         "PogData",
         "Vigilance",
-        "requestV2"
+        "requestV2",
+        "WebSocket"
     ]
 }

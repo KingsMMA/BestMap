@@ -15,6 +15,7 @@ import "./extra/VisitedCommand"
 import "./extra/DungeonLoggerNew"
 import "./extra/DungeonViewer"
 import "./extra/NewRoomCommand"
+import "./extra/SocketManager";
 import DmapDungeon from "./components/DmapDungeon"
 import Room from "./components/Room"
 
