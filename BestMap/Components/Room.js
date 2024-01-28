@@ -233,6 +233,7 @@ export default class Room {
         if (this.highlighted) color = colorShift(color, Color.YELLOW, 0.2)
         // Give the room a red tint if it has the mimic
         if (this.hasMimic && Dungeon.mimicKilled) color = colorShift(color, Color.RED, 0.2)
+        if (!this.explored && Dungeon.time) color = color.darker().darker().darker();
         return color
     }
 
