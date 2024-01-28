@@ -496,8 +496,10 @@ export default new class DmapDungeon {
 
         if (player.inRender)
             return this.getRoomAt(player.realX, player.realZ);
-        else
+        else if (positions[player.player])
             return this.getRoomAt(positions[player.player].x, positions[player.player].z)
+        else
+            return null;
     }
 
     /**

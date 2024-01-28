@@ -89,9 +89,11 @@ function onData(data) {
             break;
         case "user_joined":
             ChatLib.chat(`&3[BMAP] &9${data.ign}&b has joined the party.`);
+            partyMembers.push(data.ign);
             break;
         case "user_left":
             ChatLib.chat(`&3[BMAP] &9${data.ign}&b has left the party.`);
+            partyMembers = partyMembers.filter(member => member !== data.ign);
             break;
         case "disconnect":
             ChatLib.chat("&3[BMAP] &bYou've been disconnected from the server. Reason: &9" + data.reason);
@@ -111,6 +113,9 @@ function onData(data) {
                 z: data.z,
                 rotation: data.rotation
             };
+            break;
+        case "error":
+            console.error(`Received error through socket: ${JSON.stringify(data)}`);
             break;
         default:
             ChatLib.chat("&3[BMAP] &bReceived unknown message type from server: &9" + data.type);
