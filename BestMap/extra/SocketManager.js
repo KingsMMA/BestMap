@@ -128,7 +128,7 @@ register("step", () => {
         if (!socket) return;
         socket.send(`{"type": "position", "x": ${Player.getX()}, "z": ${Player.getZ()}, "rotation": ${Player.getYaw() + 180}}`);
     } catch (e) {}
-}).setFps(15);
+}).setFps(5);
 
 register("gameUnload", () => {
     if (socket) {
