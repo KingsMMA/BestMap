@@ -150,15 +150,26 @@ export default new class DmapDungeon {
         register("step", () => {
             if ((!Dungeon.inDungeon || !Config.enabled) && !Config.mapEditGui.isOpen()) return
 
+            let hideSecrets = Dungeon.secretsFound < 3;
+            if (hideSecrets) {
+                let hide = false;
+                for (let room of this.dungeonMap.rooms) {
+                    if (room.entered) continue;
+                    hide = true;
+                    break;
+                }
+                if (!hide) hideSecrets = false;
+            }
+
             let secretsForMax = Math.ceil(this.dungeonMap.secrets * Dungeon.secretsPercentNeeded)
             let ms = Math.ceil(secretsForMax*((40 - (Dungeon.isPaul ? 10 : 0) - (Dungeon.mimicKilled ? 2 : 0) - (Dungeon.crypts > 5 ? 5 : Dungeon.crypts) + (Dungeon.deathPenalty))/40))
 
             let totalSecrets = Dungeon.totalSecrets || this.dungeonMap.secrets;
-            let dSecrets = `&7Secrets: &b${Dungeon.secretsFound}&8-&e${this.dungeonMap.fullyScanned ? (totalSecrets - Dungeon.secretsFound) : '?'}&8-&c${this.dungeonMap.fullyScanned ? totalSecrets : '?'}`
+            let dSecrets = `&7Secrets: &b${Dungeon.secretsFound}&8-&e${!hideSecrets ? (totalSecrets - Dungeon.secretsFound) : '?'}&8-&c${!hideSecrets ? totalSecrets : '?'}`
             let dCrypts = "&7Crypts: " + (Dungeon.crypts >= 5 ? `&a${Dungeon.crypts}` : Dungeon.crypts > 0 ? `&e${Dungeon.crypts}` : `&c0`) + (Config.showTotalCrypts ? ` &8(${this.dungeonMap.crypts})` : "")
             let dMimic = [6, 7].includes(Dungeon.floorNumber) ? ("&7Mimic: " + (Dungeon.mimicKilled ? "&a✔" : "&c✘")) : ""
         
-            let minSecrets = "&7Min Secrets: " + (this.dungeonMap.fullyScanned ? (!this.dungeonMap.secrets && !Dungeon.minSecrets ? "&b?" : Dungeon.minSecrets ? `&e${Dungeon.minSecrets}` : `&a${ms}`) : "&b?");
+            let minSecrets = "&7Min Secrets: " + (!hideSecrets ? (!this.dungeonMap.secrets && !Dungeon.minSecrets ? "&b?" : Dungeon.minSecrets ? `&e${Dungeon.minSecrets}` : `&a${ms}`) : "&b?");
             let dDeaths = "&7Deaths: " + (Dungeon.deathPenalty < 0 ? `&c${Dungeon.deathPenalty}` : "&a0")
             let dScore = "&7Score: " + (Dungeon.score >= 300 ? `&a${Dungeon.score}` : Dungeon.score >= 270 ? `&e${Dungeon.score}` : `&c${Dungeon.score}`)
         
