@@ -3,7 +3,7 @@
     "latestVersion": "1.1",
     "author": "KingsDev",
     "changelog": [
-        "Hide some score data when not fully scanned",
+        "Hide some score data if not all rooms entered and less than 3 secrets found",
         "Made text look way nicer",
         "Added option to make text be the colour of the checkmark",
         "Different coloured background when not fully scanned",
