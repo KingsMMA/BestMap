@@ -349,6 +349,14 @@ class Config {
     checkmarkStyle = 0;
 
     @SwitchProperty({
+        name: "&aColour Room Name Instead",
+        description: "Instead of rendering a checkmark, change the color of the room name depending on the checkmark in that room.",
+        category: "Rooms",
+        subcategory: "Checkmarks"
+    })
+    colorRoomNames = false;
+
+    @SwitchProperty({
         name: "Center Checkmarks",
         description: "Center checkmarks in larger rooms.",
         category: "Rooms",

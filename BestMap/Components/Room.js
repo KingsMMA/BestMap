@@ -3,6 +3,7 @@ import Dungeon from "../../BloomCore/dungeons/Dungeon"
 import Config from "../data/Config"
 import { chunkLoaded, Color, colorShift, renderCenteredString } from "../../BloomCore/utils/Utils"
 import { RoomMap } from "../utils"
+import renderLibs from "../../guimanager/renderLibs.js";
 
 
 const offsets = [[-halfRoomSize, -halfRoomSize], [halfRoomSize, -halfRoomSize], [halfRoomSize, halfRoomSize], [-halfRoomSize, halfRoomSize]]
@@ -254,16 +255,69 @@ export default class Room {
         }
     }
 
+    getRoomNameColor() {
+        if (this.checkmark === Checkmark.GREEN) return "&a";
+        else if (this.checkmark === Checkmark.FAILED) return "&c";
+        else if (this.checkmark === Checkmark.WHITE) return "&f";
+        else if (this.explored) return "&7";
+        return "&7";
+    }
+
+    renderBorderedText(text, textColored, x, y, textScale) {
+        let a = () => {
+            Renderer.translate(dmapData.map.x, dmapData.map.y);
+            Renderer.scale(dmapData.map.scale, dmapData.map.scale);
+        };
+        let b = () => {
+            Renderer.finishDraw();
+        };
+        a();
+        renderLibs.drawStringCenteredShadow(text, x + textScale, y - 4.5 * textScale, textScale);
+        b();
+        a();
+        renderLibs.drawStringCenteredShadow(text, x - textScale, y - 4.5 * textScale, textScale);
+        b();
+        a();
+        renderLibs.drawStringCenteredShadow(text, x, y + textScale - 4.5 * textScale, textScale);
+        b();
+        a();
+        renderLibs.drawStringCenteredShadow(text, x, y - textScale - 4.5 * textScale, textScale);
+        b();
+
+        a();
+        renderLibs.drawStringCenteredShadow(textColored, x, y - 4.5 * textScale, textScale);
+        b();
+    }
+
     renderName() {
         const name = this.name ?? "Unknown"
-        Renderer.translate(dmapData.map.x, dmapData.map.y)
-        Renderer.scale(dmapData.map.scale, dmapData.map.scale)
-        renderCenteredString((this.explored || this.entered) ? name : "???", this.roomNameX, this.roomNameY-1, 0.55, true)
-        Renderer.finishDraw()
+        let showName = this.explored || this.entered;
+        if (Config.colorRoomNames) {
+            if (!showName) {
+                this.renderBorderedText("&0???", "&7???", this.roomNameX, this.roomNameY, 0.55);
+            } else if (name.includes(' ')) {
+                let lines = name.split(' ');
+                let colour = this.getRoomNameColor();
+                for (let i = 0; i < lines.length; i++) {
+                    let line = lines[i];
+                    this.renderBorderedText("&0" + line, colour + line, this.roomNameX, this.roomNameY + 6 * (
+                        (lines.length % 2 === 0) ?
+                            i - Math.floor(lines.length / 2) + 0.5 :
+                            i - Math.floor(lines.length / 2)
+                    ), 0.55);
+                }
+            } else this.renderBorderedText("&0" + name, this.getRoomNameColor() + name, this.roomNameX, this.roomNameY, 0.55);
+        } else {
+            Renderer.translate(dmapData.map.x, dmapData.map.y);
+            Renderer.scale(dmapData.map.scale, dmapData.map.scale);
+            renderCenteredString(showName ? name : "???", this.roomNameX, this.roomNameY, 0.55, true);
+            Renderer.finishDraw();
+        }
     }
 
     renderCheckmark() {
         if (!this.checkmarkImage) return
+        if (Config.colorRoomNames) return;
 
         Renderer.translate(dmapData.map.x, dmapData.map.y)
         Renderer.scale(dmapData.map.scale, dmapData.map.scale)
