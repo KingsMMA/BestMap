@@ -1,8 +1,12 @@
 {
     "moduleName": "BestMap",
-    "latestVersion": "5.4.1",
+    "latestVersion": "1.1",
     "author": "KingsDev",
     "changelog": [
-        "First release"
+        "Hide some score data when not fully scanned",
+        "Made text look way nicer",
+        "Added option to make text be the colour of the checkmark",
+        "Different coloured background when not fully scanned",
+        "Lowered player updates to 5/second"
     ]
 }
