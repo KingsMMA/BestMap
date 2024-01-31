@@ -153,12 +153,12 @@ export default new class DmapDungeon {
             let secretsForMax = Math.ceil(this.dungeonMap.secrets * Dungeon.secretsPercentNeeded)
             let ms = Math.ceil(secretsForMax*((40 - (Dungeon.isPaul ? 10 : 0) - (Dungeon.mimicKilled ? 2 : 0) - (Dungeon.crypts > 5 ? 5 : Dungeon.crypts) + (Dungeon.deathPenalty))/40))
 
-            let totalSecrets = Dungeon.totalSecrets || this.dungeonMap.secrets
-            let dSecrets = `&7Secrets: &b${Dungeon.secretsFound}&8-&e${totalSecrets - Dungeon.secretsFound}&8-&c${totalSecrets}`
+            let totalSecrets = Dungeon.totalSecrets || this.dungeonMap.secrets;
+            let dSecrets = `&7Secrets: &b${Dungeon.secretsFound}&8-&e${this.dungeonMap.fullyScanned ? (totalSecrets - Dungeon.secretsFound) : '?'}&8-&c${this.dungeonMap.fullyScanned ? totalSecrets : '?'}`
             let dCrypts = "&7Crypts: " + (Dungeon.crypts >= 5 ? `&a${Dungeon.crypts}` : Dungeon.crypts > 0 ? `&e${Dungeon.crypts}` : `&c0`) + (Config.showTotalCrypts ? ` &8(${this.dungeonMap.crypts})` : "")
             let dMimic = [6, 7].includes(Dungeon.floorNumber) ? ("&7Mimic: " + (Dungeon.mimicKilled ? "&a✔" : "&c✘")) : ""
         
-            let minSecrets = "&7Min Secrets: " + (!this.dungeonMap.secrets && !Dungeon.minSecrets ? "&b?" : Dungeon.minSecrets ? `&e${Dungeon.minSecrets}` : `&a${ms}`)
+            let minSecrets = "&7Min Secrets: " + (this.dungeonMap.fullyScanned ? (!this.dungeonMap.secrets && !Dungeon.minSecrets ? "&b?" : Dungeon.minSecrets ? `&e${Dungeon.minSecrets}` : `&a${ms}`) : "&b?");
             let dDeaths = "&7Deaths: " + (Dungeon.deathPenalty < 0 ? `&c${Dungeon.deathPenalty}` : "&a0")
             let dScore = "&7Score: " + (Dungeon.score >= 300 ? `&a${Dungeon.score}` : Dungeon.score >= 270 ? `&e${Dungeon.score}` : `&c${Dungeon.score}`)
         
