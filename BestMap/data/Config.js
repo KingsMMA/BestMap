@@ -368,7 +368,7 @@ class Config {
         category: "Rooms",
         subcategory: "Checkmarks"
     })
-    colorRoomNames = false;
+    colorRoomNames = true;
 
     @SwitchProperty({
         name: "Center Checkmarks",
