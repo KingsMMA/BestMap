@@ -70,11 +70,25 @@ class Config {
     };
 
     @ColorProperty({
-        name: "Background Color",
+        name: "Background Color - Map Loaded",
         description: "Change the background color and transparency of the map.",
         category: "General"
     })
     backgroundColor = new Color(0, 0, 0, 179/255);
+
+    @SwitchProperty({
+        name: "Use Different Color If Not Loaded",
+        description: "If the map isn't fully scanned, use a different background color.",
+        category: "General"
+    })
+    useDifferentColorIfNotLoaded = true;
+
+    @ColorProperty({
+        name: "Background Color - Map Not Loaded",
+        description: "Change the background color and transparency of the map when the map isn't fully scanned.",
+        category: "General"
+    })
+    backgroundColorNotLoaded = new Color(100/255, 0, 0, 179/255);
 
     @SwitchProperty({
         name: "&aHide In Boss",
